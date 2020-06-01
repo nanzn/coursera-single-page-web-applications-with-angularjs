@@ -1,0 +1,8 @@
+<ul>
+  <li ng-repeat="item in controller.items">
+    Name: <b>{{ item.name }}</b> <br>
+    Short Name: {{ item.short_name }} <br>
+    Description: {{ item.description }} <br>
+    <button class="btn btn-info" ng-click="controller.onRemove({index: $index});">Don't want this one!</button>
+  </li>
+</ul>

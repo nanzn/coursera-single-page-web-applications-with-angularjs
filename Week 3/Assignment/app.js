@@ -24,6 +24,13 @@ function FoundItemsDirective() {
 
 function FoundItemsDirectiveController() {
   var controller = this;
+
+  controller.checkEmpty = function () {
+    if(controller.items.length == 0){
+      return true;
+    }
+    return false; 
+  }
 }
 
 NarrowItDownController.$inject = ['MenuSearchService', '$q'];
@@ -57,6 +64,9 @@ function MenuSearchService($http, ApiBasePath) {
     }).then(function (response) {
       // process result and only keep items that match
       var foundItems = [];
+      if(searchTerm == ""){
+        return foundItems;
+      }
       var menuItems = response.data.menu_items;
       for(var i = 0; i < menuItems.length; i++){
         if(menuItems[i].description.includes(searchTerm)){

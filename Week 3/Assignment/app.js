@@ -32,20 +32,12 @@ function NarrowItDownController(MenuSearchService) {
 
   controller.searchTerm = "";
   controller.found = [];
-  controller.showErrorMessage = false;
 
   controller.narrowItDown = function () {
     MenuSearchService.getMatchedMenuItems(controller.searchTerm)
     .then(function (response) {
       controller.found = response;
     });
-
-    if(controller.searchTerm == "" || controller.found.length <= 0){
-      controller.showErrorMessage = true;
-    }
-    else{
-      controller.showErrorMessage = false;
-    }
 
   };
 

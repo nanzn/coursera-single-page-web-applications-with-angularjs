@@ -1,0 +1,37 @@
+<div class="containter">
+  <h2 id="my-info-title" class="text-center">My Info</h2>
+
+  <div class="container" ng-if="myInfoCtrl.registered">
+    First Name: {{myInfoCtrl.user.firstName}} <br>
+    Last Name: {{myInfoCtrl.user.lastName}} <br>
+    Email Address: {{myInfoCtrl.user.emailAddress}} <br>
+    Phone Number: {{myInfoCtrl.user.phoneNumber}} <br>
+
+    Favorite Dish: <br>
+    <div class="menu-item-tile col-md-6">
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="menu-item-photo">
+            <div>{{myInfoCtrl.user.menuItem.short_name}}</div>
+            <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.user.menuItem.short_name}}.jpg" alt="{{myInfoCtrl.user.menuItem.name}}">
+          </div>
+          <div class="menu-item-price">{{myInfoCtrl.user.menuItem.price_small | currency}}<span> {{myInfoCtrl.user.menuItem.small_portion_name}}</span> {{myInfoCtrl.user.menuItem.price_large | currency}} <span>{{myInfoCtrl.user.menuItem.large_portion_name}}</span></div>
+        </div>
+        <div class="menu-item-description col-sm-7">
+          <h3 class="menu-item-title">{{myInfoCtrl.user.menuItem.name}}</h3>
+          <p class="menu-item-details">{{myInfoCtrl.user.menuItem.description}}</p>
+        </div>
+      </div>
+      <hr class="visible-xs">
+  </div>
+  </div>
+
+
+  <div class="container" ng-if="!myInfoCtrl.registered">
+    <div class="text-center"><br>
+      Not Signed Up Yet.
+      <br><a ui-sref="public.signUp" style="font-weight: bold">Sign Up Now!</a>
+    </div>
+  </div>
+
+</div>
